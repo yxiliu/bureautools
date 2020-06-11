@@ -1,0 +1,45 @@
+<div nz-row>
+    <div nz-col nzSpan="4" nzOffset="4">
+        <h2>内容：</h2>
+         
+    </div>
+    <div nz-col nzSpan="1" nzOffset="10">
+        <h3>分隔符</h3>
+    </div>
+    <div nz-col nzSpan="1" >
+        <input type="text" nz-input [(ngModel)]="seperator" />
+    </div>
+  </div>
+
+  <div nz-row>
+    <div nz-col nzSpan="16" nzOffset="4">
+        <textarea rows="4" nz-input [(ngModel)]="content"></textarea>
+    </div>
+  </div>
+
+  <div nz-row>
+    <div nz-col nzSpan="16" nzOffset="4">
+        <nz-button-group>
+            <button nz-button nzType="primary" (click)="dulremover()"><i nz-icon nzType="diff" nzTheme="fill"></i><i nz-icon nzType="right" ></i>去 &nbsp; 重</button>
+            <button nz-button nzType="primary" (click)="count()"><i nz-icon nzType="block" ></i>数 &nbsp; 量</button>
+        </nz-button-group>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  
+  <div nz-row *ngIf="isCounter == false">
+    <div nz-col nzSpan="16" nzOffset="4">
+        <p>共 {{countNumber}} 项</p>
+        <span *ngFor="let item of dulcontent">{{item}}{{seperator}}</span>
+    </div>
+  </div>
+
+
+  <div nz-row *ngIf="isCounter == true">
+    <div nz-col nzSpan="16" nzOffset="4">
+      <p>共 {{countNumber}} 项</p>
+        <p *ngFor="let item of counterresult">{{item.item}} &nbsp; &nbsp; {{item.times}}</p>
+    </div>
+  </div>

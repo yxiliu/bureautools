@@ -1,0 +1,12 @@
+<h3>新的</h3>
+<nz-transfer [nzDataSource]="list" nzShowSearch [nzOperations]="['选择', '去除']"
+
+  [nzListStyle]="{ 'width.px': 350, 'height.px': 500 }" [nzRender]="render" [nzFooter]="footer"
+  [nzTitles]="['备选', '选中']" (nzSelectChange)="select($event)" (nzChange)="change($event)">
+  <ng-template #render let-item> {{ item.title }}-{{ item.description }} </ng-template>
+  <ng-template #footer let-direction>
+    <button nz-button (click)="reload(direction)" [nzSize]="'small'" style="float: right; margin: 5px;">
+      保存
+    </button>
+  </ng-template>
+</nz-transfer>

@@ -1,0 +1,22 @@
+<br>
+<br>
+
+
+<div nz-row>
+  <div nz-col nzSpan="13" nzOffset="2">
+    <router-outlet></router-outlet>
+  </div>
+  <div id="leftborder" nz-col nzSpan="7">
+    <ul nz-list [nzDataSource]="data"  >
+        <nz-list-header>已保存</nz-list-header>
+        <li nz-list-item *ngFor="let item of data" nzNoFlex>
+          <ul nz-list-item-actions>
+            <nz-list-item-action>
+              <a (click)="msg.info('edit')">编辑</a>
+            </nz-list-item-action>
+          </ul>
+          <a  [routerLink]="['/bureau/show']" [queryParams]="{id:1}" >{{ item }}</a>
+        </li>
+      </ul>
+  </div>
+</div>

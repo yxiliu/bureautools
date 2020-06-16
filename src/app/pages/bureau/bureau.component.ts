@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { TransferItem } from 'ng-zorro-antd/transfer';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
+interface savedList{
+  id: number;
+  name: string;
+}
 
 @Component({
   selector: 'app-bureau',
@@ -10,20 +15,22 @@ import { TransferItem } from 'ng-zorro-antd/transfer';
 })
 export class BureauComponent implements OnInit {
 
-  constructor(public msg: NzMessageService) { }
+  private getsavedbureaulist: string = "http://locahost:8888/getburealist"
+
+  constructor(public msg: NzMessageService, public htt: HttpClient) { }
   list: TransferItem[] = [];
 
   ngOnInit(): void {
-    this.getData();
+    this.getsavedlist();
   }
 
-  data = [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.'
-  ];
+  getsavedlist(): void {
+    this.htt.get(this.getsavedbureaulist).subscribe((res1:Array<savedList>)=>{
+      this.savedbureauList = res1
+    })
+  }
+
+  public savedbureauList?: Array<savedList>;
 
   getData(): void {
     const ret: TransferItem[] = [];

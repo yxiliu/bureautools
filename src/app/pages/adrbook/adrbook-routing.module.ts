@@ -7,7 +7,7 @@ const routes: Routes = [
   {path:'',component:AdrbookComponent, children:
     [
       {path:'new', component:NewadrbookComponent },
-      {path:'exist', component:ExistadrbookComponent },
+      {path:'show', component:ExistadrbookComponent },
       {path:'**', redirectTo:'new'}
 
 ]}

@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { TransferItem } from 'ng-zorro-antd/transfer';
 import {ActivatedRoute} from '@angular/router'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+
 
 interface DataItem {
   name: string;
-  age: number;
-  address: string;
+  category: string;
+  chief: string;
 }
 @Component({
   selector: 'app-bureashow',
@@ -15,45 +17,37 @@ interface DataItem {
 })
 export class BureashowComponent implements OnInit {
 
-  constructor(public msg: NzMessageService, private route: ActivatedRoute) { }
-  
+  constructor(public msg: NzMessageService, private route: ActivatedRoute, public htt: HttpClient) { }
+  public getInfoURI:string = "http://localhost:8888/getthisdata?id="
+  public currentId: string = ''
   ngOnInit(): void {
+    this.getData()
   }
 
   public detailName?:string = 'test'
-
-  getid():void{
-    this.route.queryParams.subscribe((res)=>{
-      console.log(res)
+  private listOfData: DataItem[] = [];
+  public searchValue = '';
+  public listOfDisplayData:DataItem[] = [];
+  getData():void{
+    this.getid()
+    this.htt.get(this.currentId+this.currentId).subscribe(res=>{
+      this.listOfData = res["data"]
+      this.listOfDisplayData = res['data']
     })
   }
 
 
-  searchValue = '';
+  getid():void{
+    this.route.queryParams.subscribe((res)=>{
+      this.currentId = res.id as string
+    })
+  }
+
+
+  
   visible = false;
-  listOfData: DataItem[] = [
-    {
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    },
-    {
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park'
-    }
-  ];
-  listOfDisplayData = [...this.listOfData];
+  
+  
 
   reset(): void {
     this.searchValue = '';
@@ -64,7 +58,4 @@ export class BureashowComponent implements OnInit {
     this.visible = false;
     this.listOfDisplayData = this.listOfData.filter((item: DataItem) => item.name.indexOf(this.searchValue) !== -1);
   }
-  
-
-
 }

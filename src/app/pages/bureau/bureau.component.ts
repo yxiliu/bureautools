@@ -15,7 +15,7 @@ interface savedList{
 })
 export class BureauComponent implements OnInit {
 
-  private getsavedbureaulist: string = "http://locahost:8888/getburealist"
+  private getsavedbureaulist: string = "/api/bsavelist"
 
   constructor(public msg: NzMessageService, public htt: HttpClient) { }
   list: TransferItem[] = [];

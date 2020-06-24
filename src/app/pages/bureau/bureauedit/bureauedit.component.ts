@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { TransferItem } from 'ng-zorro-antd/transfer';
+import {ActivatedRoute} from '@angular/router';
 
 interface IeachBureau{
   id:number | string;
@@ -15,15 +16,21 @@ interface IeachBureau{
   styleUrls: ['./bureauedit.component.css']
 })
 export class BureaueditComponent implements OnInit {
-  constructor(public msg: NzMessageService,public htt: HttpClient) { }
-  public allbureauURI:string = "http://localhost:8888/getallbureau";
+  constructor(public msg: NzMessageService,public htt: HttpClient,private route: ActivatedRoute,) { }
+  public allbureauURI:string = "/api/bedit";
   public allbureauData?:Array<TransferItem> = []
-  public bureauPostURI:string = "http://localhost:8888/postallbureau";
-
+  public bureaucreatURI:string = "/api/createnewburealist";
+  public bureauchangeURI:string = "/api/changeburealist";
+  public currentId :string = '0';
   ngOnInit(): void {
+    this.getid()
   }
   
-  
+  getid():void{
+    this.route.queryParams.subscribe((res)=>{
+      this.currentId = res.id as string
+    })
+  }
   
   list: TransferItem[] = [];
 

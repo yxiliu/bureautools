@@ -18,21 +18,28 @@ interface DataItem {
 export class BureashowComponent implements OnInit {
 
   constructor(public msg: NzMessageService, private route: ActivatedRoute, public htt: HttpClient) { }
-  public getInfoURI:string = "http://localhost:8888/getthisdata?id="
+  public getInfoURI:string = "/api/getthisdata?id="
+  public getblistURI:string = "/api/bsavedetaillist?id="
   public currentId: string = ''
   ngOnInit(): void {
+    this.getid()
     this.getData()
   }
-
-  public detailName?:string = 'test'
+  public bname:string ='';
+public bclass:string = '';
+public chief:string = "";
+public bname
   private listOfData: DataItem[] = [];
   public searchValue = '';
   public listOfDisplayData:DataItem[] = [];
+
   getData():void{
-    this.getid()
-    this.htt.get(this.currentId+this.currentId).subscribe(res=>{
+    this.htt.get(this.getblistURI+this.currentId).subscribe(res=>{
       this.listOfData = res["data"]
       this.listOfDisplayData = res['data']
+    })
+    this.htt.get(this.getInfoURI + this.currentId).subscribe(res=>{
+      this.
     })
   }
 

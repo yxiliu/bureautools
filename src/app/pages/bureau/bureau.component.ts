@@ -3,6 +3,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { TransferItem } from 'ng-zorro-antd/transfer';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 
+
+
+
 interface savedList{
   id: number;
   name: string;
@@ -57,4 +60,7 @@ export class BureauComponent implements OnInit {
   change(ret: {}): void {
     console.log('nzChange', ret);
   }
+
+
+
 }

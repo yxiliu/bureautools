@@ -25,22 +25,26 @@ export class BureashowComponent implements OnInit {
     this.getid()
     this.getData()
   }
-  public bname:string ='';
-  public bclass:string = '';
-  public chief:string = "";
+  public bsavename:string ='';
+
+  public updatetime = "";
+  public createtime = "";
+  public createperson = "";
   private listOfData: DataItem[] = [];
   public searchValue = '';
   public listOfDisplayData:DataItem[] = [];
-
+  public descb = "";
   getData():void{
     this.htt.get(this.getblistURI+this.currentId).subscribe(res=>{
       this.listOfData = res["data"]
       this.listOfDisplayData = res['data']
     })
     this.htt.get(this.getInfoURI + this.currentId).subscribe(res=>{
-      this.bname = res["bname"]
-      this.bclass = res["bclass"]
-      this.chief = res["chief"]
+      this.bsavename = res["bname"]
+      this.updatetime = res["updatetime"]
+      this.createtime = res["createtime"]
+      this.createperson = res["createperson"]
+      this.descb = res["descb"]
     })
   }
 

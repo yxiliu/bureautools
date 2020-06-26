@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { TransferItem } from 'ng-zorro-antd/transfer';
 import {ActivatedRoute} from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface IeachBureau{
   id:number | string;
@@ -16,7 +18,7 @@ interface IeachBureau{
   styleUrls: ['./bureauedit.component.css']
 })
 export class BureaueditComponent implements OnInit {
-  constructor(public msg: NzMessageService,public htt: HttpClient,private route: ActivatedRoute,) { }
+  constructor(public msg: NzMessageService,public htt: HttpClient,private route: ActivatedRoute,private modalService: NzModalService, private fb: FormBuilder) { }
   public allbureauURI:string = "/api/bedit";
   public allbureauData?:Array<TransferItem> = []
   public bureaucreatURI:string = "/api/createnewburealist";
@@ -62,4 +64,34 @@ export class BureaueditComponent implements OnInit {
   save():void{
     // this.htt.post()
   }
+
+
+
+    //  modal related
+    public modalIsVisible: boolean = false;
+    public showModal(): void {
+      this.modalIsVisible = true;
+    }
+    public handleCancel():void{
+      this.modalIsVisible = false;
+    }
+    public submitQuery(): void {
+      this.modalIsVisible = false;
+    }
+    validateForm!: FormGroup;
+    formInit():void{
+      this.validateForm = this.fb.group({
+        title: [null, [Validators.required]],
+        creator: [null, [Validators.required]],
+        effectiveYear: [null, [Validators.required]],
+      });
+    }
+
+    submitForm(): void {
+      for (const i in this.validateForm.controls) {
+        this.validateForm.controls[i].markAsDirty();
+        this.validateForm.controls[i].updateValueAndValidity();
+      }
+    }
+  
 }

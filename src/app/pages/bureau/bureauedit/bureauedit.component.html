@@ -10,3 +10,40 @@
     </button>
   </ng-template>
 </nz-transfer>
+
+
+
+<div>
+  <button nz-button nzType="primary" (click)="showModal()">Save</button>
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    nzTitle="Modal"
+    nzOkText="确定"
+    nzCancelText="取消"
+    (nzOnOk)="submitQuery()"
+    (nzOnCancel)="handleCancel()"
+  >
+  <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input type="text" nz-input placeholder="input search text" />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
+  <br>
+  <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input type="text" nz-input placeholder="input search text" />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
+  <br>
+  <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input type="text" nz-input placeholder="input search text" />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
+
+
+  </nz-modal>
+</div>

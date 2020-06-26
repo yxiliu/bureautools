@@ -78,20 +78,8 @@ export class BureaueditComponent implements OnInit {
     public submitQuery(): void {
       this.modalIsVisible = false;
     }
-    validateForm!: FormGroup;
-    formInit():void{
-      this.validateForm = this.fb.group({
-        title: [null, [Validators.required]],
-        creator: [null, [Validators.required]],
-        effectiveYear: [null, [Validators.required]],
-      });
-    }
-
-    submitForm(): void {
-      for (const i in this.validateForm.controls) {
-        this.validateForm.controls[i].markAsDirty();
-        this.validateForm.controls[i].updateValueAndValidity();
-      }
-    }
-  
+    
+    public newSaveName:string = '';
+    public newCreatePerson:string = "";
+    public newDescb:string = "";
 }

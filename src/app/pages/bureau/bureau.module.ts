@@ -11,31 +11,51 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { zh_CN } from 'ng-zorro-antd/i18n';
-import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { BureaueditComponent } from './bureauedit/bureauedit.component';
 import { BureashowComponent } from './bureashow/bureashow.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzModalService } from 'ng-zorro-antd/modal';
+// import { FormBuilder, FormControl } from '@angular/forms';
+// import { NzFormModule } from 'ng-zorro-antd/form';
+import {CommonServiceService} from "../../services/common-service.service"
+import { NzIconService } from "ng-zorro-antd/icon"
+import { IconDefinition } from '@ant-design/icons-angular';
+
+import * as AllIcons from '@ant-design/icons-angular/icons';
+
+const antDesignIcons = AllIcons as {
+  [key: string]: IconDefinition;
+};
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
+
+
+
+
 @NgModule({
-  declarations: [BureauComponent,  BureaueditComponent, BureashowComponent],
+  declarations: [BureauComponent, BureaueditComponent, BureashowComponent],
   imports: [
     CommonModule,
     BureauRoutingModule,
     NzTransferModule,
     FormsModule,
+    ReactiveFormsModule,
     NzButtonModule,
     NzGridModule,
     NzListModule,
+    NzInputModule,
     NzDescriptionsModule,
     NzTableModule,
     NzDropDownModule,
-    NzIconModule
+    NzIconModule.forRoot(icons),
+    NzModalModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN },NzMessageService],
+  providers: [{ provide: NZ_I18N, useValue: zh_CN }, NzMessageService, NzModalService, CommonServiceService, NzIconService],
 })
 export class BureauModule { }

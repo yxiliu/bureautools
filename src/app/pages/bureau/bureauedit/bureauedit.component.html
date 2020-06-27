@@ -5,8 +5,48 @@
   [nzTitles]="['备选', '选中']" (nzSelectChange)="select($event)" (nzChange)="change($event)">
   <ng-template #render let-item> {{ item.title }}-{{ item.description }} </ng-template>
   <ng-template #footer let-direction>
-    <button nz-button (click)="reload(direction)" [nzSize]="'small'" style="float: right; margin: 5px;">
-      保存
-    </button>
+    
   </ng-template>
 </nz-transfer>
+<br>
+<button nz-button (click)="showModal()" [nzSize]="'small'" style="float: right; margin-right: 70px; margin-top: 10px;">
+  保存
+</button>
+
+<div>
+
+  <nz-modal
+    [(nzVisible)]="modalIsVisible"
+    nzTitle="创建/更新"
+    nzOkText="确定"
+    nzCancelText="取消"
+    (nzOnOk)="submitQuery()"
+    (nzOnCancel)="handleCancel()"
+  >
+  <nz-input-group [nzSuffix]="suffixIconname">
+    <input type="text" nz-input placeholder="保存名称" [(ngModel)]="newSaveName" />
+  </nz-input-group>
+  <ng-template #suffixIconname>
+    <i nz-icon nzType="profile" nzTheme="outline"></i>
+  </ng-template>
+  <br>
+  <br>
+  <nz-input-group [nzSuffix]="suffixIconuser">
+    <input type="text" nz-input placeholder="维护人" [(ngModel)]="newCreatePerson" />
+  </nz-input-group>
+  <ng-template #suffixIconuser>
+    <i nz-icon nzType="user" nzTheme="outline"></i>
+  </ng-template>
+  <br>
+  <br>
+
+  <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input type="text" nz-input placeholder="描述" [(ngModel)]="newDescb" />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="build" nzTheme="outline"></i>
+  </ng-template>
+
+
+  </nz-modal>
+</div>

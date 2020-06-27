@@ -18,34 +18,34 @@ interface DataItem {
 export class BureashowComponent implements OnInit {
 
   constructor(public msg: NzMessageService, private route: ActivatedRoute, public htt: HttpClient) { }
-  public getInfoURI: string = "/api/bsavedetail?id="
-  public getblistURI: string = "/api/bsavedetaillist?id="
-  public currentId: string = ''
+  public getInfoURI: string = "/api/bsavedetail?id=";
+  public getblistURI: string = "/api/bsavedetaillist?id=";
+  public currentId: string = '';
+  public visible:boolean = true;
   ngOnInit(): void {
     this.getid()
     this.getData()
   }
-  public visible = false;
-  public bname: string = '';
-  public descb: string = '';
-  public updateperson = '';
-  public updatetime = '';
+  public bsavename:string ='';
+
+  public updatetime = "";
   public createtime = "";
+  public createperson = "";
   private listOfData: DataItem[] = [];
   public searchValue = '';
-  public listOfDisplayData: DataItem[] = [];
-
-  getData(): void {
-    this.htt.get(this.getblistURI + this.currentId).subscribe(res => {
+  public listOfDisplayData:DataItem[] = [];
+  public descb = "";
+  getData():void{
+    this.htt.get(this.getblistURI+this.currentId).subscribe(res=>{
       this.listOfData = res["data"]
       this.listOfDisplayData = res['data']
     })
-    this.htt.get(this.getInfoURI + this.currentId).subscribe(res => {
-      this.bname = res["bname"]
-      this.descb = res["descb"]
-      this.updateperson = res["updateperson"]
+    this.htt.get(this.getInfoURI + this.currentId).subscribe(res=>{
+      this.bsavename = res["bname"]
       this.updatetime = res["updatetime"]
       this.createtime = res["createtime"]
+      this.createperson = res["createperson"]
+      this.descb = res["descb"]
     })
   }
 

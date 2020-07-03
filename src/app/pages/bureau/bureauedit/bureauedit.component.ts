@@ -30,12 +30,15 @@ export class BureaueditComponent implements OnInit {
   ngOnInit(): void {
     this.getid()
     this.currentUser = this.com.getUserInfo().name;
-    this.getSaveInfo()
+    this.getSaveInfo();
+    this.getAllbureauData();
   }
   
   getid():void{
     this.route.queryParams.subscribe((res)=>{
-      this.currentId = res.id as string
+      if (res.id){
+        this.currentId = res.id as string
+      }
     })
   }
   

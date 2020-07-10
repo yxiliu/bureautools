@@ -25,16 +25,15 @@
       <ng-container *ngIf="!item.loading">
         <nz-list-item-meta
           nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-          nzDescription="Ant Design, a design language for background applications, is refined by Ant UED Team"
+          [nzDescription]="item.title"
         >
           <nz-list-item-meta-title>
-            <a href="https://ng.ant.design">{{ item.name.last }}</a>
+            <a href="https://ng.ant.design">{{ item.maintainer }}</a>
           </nz-list-item-meta-title>
         </nz-list-item-meta>
-        content
+        {{item.code}}
         <ul nz-list-item-actions>
-          <nz-list-item-action><a (click)="edit(item)">edit</a></nz-list-item-action>
-          <nz-list-item-action><a (click)="edit(item)">more</a></nz-list-item-action>
+          <nz-list-item-action><a (click)="edit(item)">更新</a></nz-list-item-action>
         </ul>
       </ng-container>
       <nz-skeleton *ngIf="item.loading" [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="true"> </nz-skeleton>

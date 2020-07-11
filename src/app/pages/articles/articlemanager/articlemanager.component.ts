@@ -103,6 +103,7 @@ export class ArticlemanagerComponent implements OnInit {
     modalName:string = '';
     modalMaintainer:string = '';
     modalCode:string = "";
+    file:string = "";
   showModal(): void {
     this.isVisible = true;
   }

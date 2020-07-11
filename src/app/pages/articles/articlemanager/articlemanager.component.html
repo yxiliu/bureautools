@@ -1,17 +1,20 @@
 <h2>发 文 管 理</h2>
 <div nz-row>
-    <div nz-col nzSpan="2" nzOffset="16">
-        select year
+
+
+    <div nz-col nzSpan="2" nzOffset="14">
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="选择年份" [(ngModel)]="selectedYear">
+        <nz-option *ngFor="let year of listOfYear" [nzLabel]="year" [nzValue]="year"></nz-option>
+      </nz-select>
     </div>
-    <div nz-col nzSpan="2">
-        select
-        <!-- <nz-select [(ngModel)]="singleValue" [nzSize]="size">
-            <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
-          </nz-select> -->
+    <div nz-col nzSpan="2" nzOffset="1">
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="选择标签" [(ngModel)]="selectedTag">
+        <nz-option *ngFor="let tag of listOfTag" [nzLabel]="tag.name" [nzValue]="tag.id"></nz-option>
+      </nz-select>
     </div>
-    <div nz-col nzSpan="4" >
+    <div nz-col nzSpan="4" nzOffset="1">
         <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-            <input type="text" nz-input placeholder="input search text" />
+            <input type="text" nz-input placeholder="名称搜索" />
           </nz-input-group>
           <ng-template #suffixIconButton>
             <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
@@ -28,10 +31,13 @@
           [nzDescription]="item.title"
         >
           <nz-list-item-meta-title>
-            <a href="https://ng.ant.design">{{ item.maintainer }}</a>
+            {{ item.maintainer }}
           </nz-list-item-meta-title>
         </nz-list-item-meta>
         {{item.code}}
+        <ul nz-list-item-actions>
+          <nz-list-item-action><a [href]="item.uri">下载</a></nz-list-item-action>
+        </ul>
         <ul nz-list-item-actions>
           <nz-list-item-action><a (click)="edit(item)">更新</a></nz-list-item-action>
         </ul>
@@ -42,3 +48,11 @@
       <button nz-button *ngIf="!loadingMore" (click)="onLoadMore()"> 加 载 更 多 </button>
     </div>
   </nz-list>
+
+  <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+    <p>Content three</p>
+  </nz-modal>

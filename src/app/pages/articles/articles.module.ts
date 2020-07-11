@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NzSelectModule } from 'ng-zorro-antd/select';
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArticlemanagerComponent } from './articlemanager/articlemanager.component';
 import { InfomanagerComponent } from './infomanager/infomanager.component';
@@ -22,7 +22,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 
-
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 @NgModule({
   declarations: [ArticlemanagerComponent, InfomanagerComponent],
@@ -34,7 +34,9 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
     NzDropDownModule,
     NzListModule,
     NzTransferModule,
+    NzModalModule,
     NzDescriptionsModule,
+    NzSelectModule,
     NzSkeletonModule,
     NzButtonModule,
     NzGridModule,

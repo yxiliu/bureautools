@@ -59,11 +59,7 @@
 
     <input nz-input placeholder="Basic usage" [(ngModel)]="modalCode" />
     <br>
-    <nz-upload
-    nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-    [nzHeaders]="{ authorization: 'authorization-text' }"
-    (nzChange)="handleChange($event)"
-  >
-    <button nz-button><i nz-icon nzType="upload"></i>Click to Upload</button>
-  </nz-upload>
+    <nz-upload [(nzFile)]="Uploadfile" [nzBeforeUpload]="beforeUpload">
+      <button nz-button><i nz-icon nzType="upload"></i>上传文件</button>
+    </nz-upload>
   </nz-modal>

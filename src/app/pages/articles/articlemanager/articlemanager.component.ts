@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzThSelectionComponent } from 'ng-zorro-antd/table';
-import { UploadChangeParam } from 'ng-zorro-antd/upload';
+import { UploadFile } from 'ng-zorro-antd/upload';
 
 
 const lastyear = 2015;
@@ -120,15 +120,10 @@ export class ArticlemanagerComponent implements OnInit {
     this.isVisible = false;
     
   }
+  Uploadfile?: UploadFile[] = [];
 
-  handleChange(info: UploadChangeParam): void {
-    if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === 'done') {
-      this.msg.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === 'error') {
-      this.msg.error(`${info.file.name} file upload failed.`);
-    }
-  }
+  beforeUpload = (file: UploadFile): boolean => {
+    this.Uploadfile = this.Uploadfile.concat(file);
+    return false;
+  };
 }

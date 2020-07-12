@@ -21,7 +21,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
-
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
 @NgModule({
@@ -37,6 +37,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzModalModule,
     NzDescriptionsModule,
     NzSelectModule,
+    NzUploadModule,
     NzSkeletonModule,
     NzButtonModule,
     NzGridModule,

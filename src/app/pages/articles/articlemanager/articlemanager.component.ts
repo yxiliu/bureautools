@@ -106,6 +106,7 @@ export class ArticlemanagerComponent implements OnInit {
     modalMaintainer:string = '';
     modalCode:string = "";
     file:string = "";
+  updateID: number = 0;
   showModal(): void {
     this.isVisible = true;
   }
@@ -120,10 +121,18 @@ export class ArticlemanagerComponent implements OnInit {
     this.isVisible = false;
     
   }
-  Uploadfile?: UploadFile[] = [];
 
+  Uploadfile?: UploadFile[] = [];
   beforeUpload = (file: UploadFile): boolean => {
     this.Uploadfile = this.Uploadfile.concat(file);
     return false;
   };
+
+  PostOrUpdate():void{
+    if(this.updateID == 0){
+      console.log("创建")
+    }else{
+      console.log("更新")
+    }
+  }
 }

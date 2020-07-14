@@ -30,6 +30,7 @@ export class PasswordGeneratorComponent implements OnInit {
 
   leastCheck(list:Array<number>):Array<number>{
     let checklist = [this.haveUpper, this.haveLower, this.haveNum, this.haveSpe]
+    
   }
 
   generator(type: number, length: number): string {

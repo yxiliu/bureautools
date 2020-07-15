@@ -38,7 +38,7 @@ export class PasswordGeneratorComponent implements OnInit {
 
   leastCheck(list:Array<number>, n:number=0):Array<number>{
     let truelist = this.falseOrTrueListGenerator(true)
-    
+    let map = this.mapCount(this.)
     let perfect = true
     for (let i of truelist){
       if (list.indexOf(i)==-1){

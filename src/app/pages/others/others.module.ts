@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
-
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { IconsProviderModule } from '../../icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -35,6 +35,7 @@ import { PasswordGeneratorComponent } from './password-generator/password-genera
     OthersRoutingModule,
     CommonModule,
     FormsModule,
+    NzCheckboxModule,
     NzInputModule,
     NzButtonModule,
     NzNotificationModule,

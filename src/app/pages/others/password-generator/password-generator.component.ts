@@ -11,8 +11,9 @@ export class PasswordGeneratorComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.generator(2, 20))
+    console.log(this.generator(20))
   }
+  passwordoutput:string = '';
 
   haveSpe: boolean = true;
   haveNum: boolean = true;
@@ -38,12 +39,15 @@ export class PasswordGeneratorComponent implements OnInit {
 
   leastCheck(list:Array<number>, n:number=0):Array<number>{
     let truelist = this.falseOrTrueListGenerator(true)
-    let map = this.mapCount(this.)
-    let perfect = true
+    let map = this.mapCount(list)
     for (let i of truelist){
       if (list.indexOf(i)==-1){
-        perfect = false
-        list[this.randomGenerator(list.length)]=i
+        for (let a of map){
+          if (a.length > 1){
+            list[a[0]] = i
+            break
+          }
+        }
       }
     }
     return list
@@ -72,7 +76,7 @@ export class PasswordGeneratorComponent implements OnInit {
 
 
 
-  generator(type: number, length: number): string {
+  generator(length: number): string {
     if (this.validate()) {
       let combineList: Array<Array<string>> = [this.Upper, this.lower, this.num, this.spe]
       let transformData = { 0: combineList[0].length, 1: combineList[1].length, 2: combineList[1].length, 3: combineList[1].length }

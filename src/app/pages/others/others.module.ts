@@ -15,8 +15,10 @@ import { zh_CN } from 'ng-zorro-antd/i18n';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzIconService } from "ng-zorro-antd/icon"
 import { IconDefinition } from '@ant-design/icons-angular';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { CounterdupremoverpComponent } from './counterdupremoverp/counterdupremoverp.component';
 import * as AllIcons from '@ant-design/icons-angular/icons';
+
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
@@ -26,12 +28,14 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
 
 import { OthersRoutingModule } from './others-routing.module';
 import { PasswordGeneratorComponent } from './password-generator/password-generator.component';
+import { ListcompareComponent } from './listcompare/listcompare.component';
 
 
 @NgModule({
-  declarations: [PasswordGeneratorComponent,CounterdupremoverpComponent],
+  declarations: [PasswordGeneratorComponent,CounterdupremoverpComponent, ListcompareComponent],
   imports: [
     CommonModule,
+    NzInputNumberModule,
     OthersRoutingModule,
     CommonModule,
     FormsModule,

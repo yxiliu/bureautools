@@ -1,0 +1,29 @@
+<div nz-row>
+    <div nz-col nzSpan="2" nzOffset="3">
+        分 隔 符:
+    </div>
+    <div nz-col nzSpan="3">
+     <input nz-input placeholder="small size" nzSize="small" [(ngModel)]="sep"/>
+    </div>
+    <div nz-col nzSpan="7" nzOffset="4">
+        <button nz-button nzSize="small" nzType="primary" (click)="compare()" > &nbsp; 对比 &nbsp; </button>
+    </div>
+</div>
+
+
+<br>
+<br>
+<hr>
+<div nz-row>
+    <div nz-col nzSpan="7" nzOffset="3">
+        <h2>左</h2>
+        <textarea rows="10" nz-input [(ngModel)]="leftcontent"></textarea>
+    </div>
+    <div nz-col nzSpan="1" nzOffset="1">
+       &nbsp; &nbsp; <i class="icond" nz-icon [nzType]="icontype" nzTheme="fill"></i>
+    </div>
+    <div nz-col nzSpan="7" nzOffset="1">
+        <h2>右</h2>
+        <textarea rows="10" nz-input [(ngModel)]="rightconten"></textarea>
+    </div>
+</div>

@@ -12,7 +12,7 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="工具箱" nzIcon="dashboard">
+      <li nz-submenu nzOpen nzTitle="小工具箱" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/counter">计算去重</a>
@@ -31,13 +31,19 @@
           </li>
         </ul>
       </li>
-      <!-- <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+      <li nz-submenu nzOpen nzTitle="小小工具箱" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+            <a routerLink="/others/counter">计算去重</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/others/password">密码生成</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/others/listcompare">序列对比</a>
           </li>
         </ul>
-      </li> -->
+      </li>
     </ul>
   </nz-sider>
   <nz-layout>

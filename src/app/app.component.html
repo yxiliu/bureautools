@@ -12,11 +12,8 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="小工具箱" nzIcon="dashboard">
+      <li nz-submenu nzOpen nzTitle="大小工具箱" nzIcon="dashboard">
         <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/counter">计算去重</a>
-          </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/bureau">单位管理</a>
           </li>
@@ -28,6 +25,9 @@
           </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/adrbook">通讯录管理</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/missions">任务管理</a>
           </li>
         </ul>
       </li>
@@ -44,6 +44,7 @@
           </li>
         </ul>
       </li>
+      
     </ul>
   </nz-sider>
   <nz-layout>
